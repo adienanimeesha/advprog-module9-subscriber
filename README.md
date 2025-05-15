@@ -8,3 +8,7 @@ The first guest is the username. The second guest is the password. localhost:567
 ## Simulation Slow Subscriber
 ![Simulation](simulationslowsubscriber.png)
 The total at its peak hits 16 messages. This is because publisher sends messages faster than the consumer could grab and acknowledge. Therefore it is stacked up in the queue until the consumer caught up. 
+
+## Reflection and Running at least three subscribers
+![Reflection](subscriberreflection.png)
+In this run, the queue never went above three because only five messages were published in total. Therefore a hard upper limit on what could pile up was there. Other than that, the subscriber,which deliberately pauses for one second per message before immediately acknowledging it,  kept pace with that small batch. Once the publisher wrapped up the five messages, the consumer immediately processed whatever was left and cleared the queue.
